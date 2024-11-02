@@ -29,3 +29,8 @@ class Duplicates {
         
     }
 }
+
+==============
+
+Time Complexity: O(N), where N = length of the string passed and it takes O(1) time to insert and access any element in an unordered map
+Auxiliary Space: O(K), where K = Size of the map which is going to be limited by alphabet size. For example, if input string contains only lower case English characters, then it is 26 only.
