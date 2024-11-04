@@ -1,0 +1,49 @@
+https://www.geeksforgeeks.org/check-if-the-given-string-is-shuffled-substring-of-another-string/
+================================================================================================
+import java.util.*;
+
+class ShuffledString {
+    public static void main(String[] args) {
+        String str1 = "geeksforgeeks";
+        String str2 = "ekegorfkeegsgeek";
+
+        boolean a = isShuffledSubString(str1, str2);
+        if (a) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
+
+    static boolean isShuffledSubString(String a, String b) {
+        int n = a.length();
+        int m = b.length();
+
+        if (n > m) {
+            return false;
+        } else {
+            a = sort(a);
+            for (int i = 0; i <= m - n; i++) { // Corrected loop limit
+                String str = "";
+
+                // Extract substring of length n
+                for (int j = 0; j < n; j++) {
+                    str += b.charAt(i + j);
+                }
+
+                // Sort the substring and compare
+                str = sort(str);
+                if (str.equals(a)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    static String sort(String inputString) {
+        char tempArray[] = inputString.toCharArray();
+        Arrays.sort(tempArray);
+        return String.valueOf(tempArray);
+    }
+}
